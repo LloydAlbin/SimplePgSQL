@@ -223,6 +223,7 @@ Length of escaped string
 ### executeFormat
 ```cpp
 int executeFormat(int progmem, const char *format, ...);
+int executeFormat(int progmem, const char *format, va_list va);
 ```
 Send formatted query to backend. Format string may be placed in Flash memory. Formatting sequences are:
 

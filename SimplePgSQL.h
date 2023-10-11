@@ -192,6 +192,7 @@ class PGconnection {
          * %% - % character
          */
         int executeFormat(int progmem, const char *format, ...);
+        int executeFormatList(int progmem, const char *format, va_list va);
 
 
     private:

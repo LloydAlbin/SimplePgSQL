@@ -527,6 +527,19 @@ int PGconnection::executeFormat(int progmem, const char *format, ...)
     return 0;
 }
 
+int PGconnection::executeFormatList(int progmem, const char *format, va_list va)
+{
+    int32_t msgLen;
+    msgLen = writeFormattedQuery(0, progmem, format, va);
+    if (msgLen < 0) return -1;
+    msgLen = writeFormattedQuery(msgLen, progmem, format, va);
+    if (msgLen) {
+        return -1;
+    }
+    result_status = PG_RSTAT_COMMAND_SENT;
+    return 0;
+}
+
 #ifdef ESP8266
 
 // there is no strchr_P in ESP8266 ROM :(
