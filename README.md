@@ -234,8 +234,10 @@ Send formatted query to backend. Format string may be placed in Flash memory. Fo
   * %l - long int (single quotes will be added)
   * %% - % character
 
-Any % character not followed by 's', 'n', 'd', 'l' or '%' causes error.
+Any % character not followed by 's', 'n', 'd', 'l', 'f' or '%' causes error.
 Query may be long, but results of any formatted value must fit in internal buffer.
+
+If you want to pass a String variable into %s, do it as variable.c_str().
 
 #### Parameters:
   * `progmem` - indicates `format` in Flash memory
