@@ -230,6 +230,7 @@ Send formatted query to backend. Format string may be placed in Flash memory. Fo
   * %s - string literal (will be escaped with escapeString)
   * %n - name (will be escaped with escapeName)
   * %d - int (single quotes will be added)
+  * %f - double (single quotes will be added)
   * %l - long int (single quotes will be added)
   * %% - % character
 

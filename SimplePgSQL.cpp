@@ -977,10 +977,14 @@ int32_t PGconnection::writeFormattedQuery(int32_t length, int progmem, const cha
             bufPos += blen;
             continue;
         }
-        if (znak == 'l' || znak == 'd') {
+        if (znak == 'l' || znak == 'd' || znak == 'f') {
             if (znak == 'l') {
                 long n = va_arg(va, long);
                 blen = snprintf(buf, 32, "'%ld'", n);
+            }
+            else if (znak == 'f') {
+                double n = va_arg(va, double);
+                blen = snprintf(buf, 32, "'%f'", n);
             }
             else {
                 int n = va_arg(va, int);
