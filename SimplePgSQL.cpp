@@ -977,7 +977,7 @@ int32_t PGconnection::writeFormattedQuery(int32_t length, int progmem, const cha
             bufPos += blen;
             continue;
         }
-        if (znak == 'l' || znak == 'd' || znak == 'f') {
+        else if (znak == 'l' || znak == 'd' || znak == 'f') {
             if (znak == 'l') {
                 long n = va_arg(va, long);
                 blen = snprintf(buf, 32, "'%ld'", n);
@@ -998,8 +998,10 @@ int32_t PGconnection::writeFormattedQuery(int32_t length, int progmem, const cha
                 msgLen += blen;
             }
         }
-        setMsg_P(EM_FORMAT, PG_RSTAT_HAVE_ERROR);
-        return -1;
+        else {
+            setMsg_P(EM_FORMAT, PG_RSTAT_HAVE_ERROR);
+            return -1;
+        }
     }
 #ifndef ESP32
     if (progmem) {
